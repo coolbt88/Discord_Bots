@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('d:/Discord/JSON_files/Mov_bot-config.json');
 const pre = config.prefix;
+const mod = config.modprefix;
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 client.on('ready', () => {
@@ -9,30 +10,59 @@ client.on('ready', () => {
 });
 
 
+var checkChannel;
+
 client.on('message', message =>{
     if (message.author.bot) return;
 
-    if(message.content.startsWith(`${pre}`)){
+    if(message.content.startsWith(`${pre}${mod}start`)){
+        setupChannel();
+        return;
+    }
 
+    function setupChannel(){
+        let channel = message.channel.id;
+
+        client.channels.cache.get(channel).send('Alright. What channel would you like me to send my reminders to?');
+        const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 10000 });
+        collector.on('collect', message => {
+            checkChannel = message.content.replace(/\D/g,'');
+            client.channels.cache.get(channel).send(('Ok. I\'ll send my reminders to <#' + checkChannel + '>.'));
+            collector.return;
+            return;
+        })
+    }
+    
+    if(message.content.startsWith(`${pre}`)){
+        if(message.content.startsWith(`${pre}${mod}`)) return;
+        let channel = message.channel.id;
         var tempTitle1 = (message.content).split("/");
         var movieTitle = encodeURIComponent(tempTitle1[1]);
         var movieUrl = 'http://www.omdbapi.com/?apikey=472eaa45&t=' +movieTitle;
-        console.log(movieUrl);
 
-        
         let request = new XMLHttpRequest();
         request.open('GET', movieUrl);
         request.send();
         request.onload = () => {
-            console.log(request);
             if(request.status === 200){
                 let info = JSON.parse(request.responseText);
-                message.reply(info.Title);
+                var message = `We're going to be watching ${info.Title} soon!
+                Description: ${info.Plot}
+                Starring: ${info.Actors}
+                `
+                if(checkChannel === undefined){
+                    client.channels.cache.get(channel).send(message);
+                }
+                else{
+                    client.channels.cache.get(checkChannel).send(message);
+                }
+               
             }
             else{
                 console.log(`error ${request.status} ${request.statusText}`);
             }
         }
+        return;
     }
 
 });
