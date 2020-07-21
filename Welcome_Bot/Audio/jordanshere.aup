@@ -1,0 +1,144 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="jordanshere_data" version="1.3.0" audacityversion="2.4.1" sel0="11.5576865371" sel1="11.5576865371" vpos="0" h="0.0000000000" zoom="25.1780491768" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="Software" value="Lavf57.56.101"/>
+		<tag name="major_brand" value="dash"/>
+		<tag name="minor_version" value="0"/>
+		<tag name="compatible_brands" value="iso6mp41"/>
+	</tags>
+	<wavetrack name="giorno&apos;s theme but only the best part is in" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="509694">
+				<waveblock start="0">
+					<simpleblockfile filename="e080837c.au" len="262144" min="-0.802052" max="0.753911" rms="0.129554"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e0808c7b.au" len="247550" min="-0.994547" max="0.917623" rms="0.208198"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="giorno&apos;s theme but only the best part is in" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="509694">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808375.au" len="262144" min="-0.762261" max="0.691909" rms="0.140143"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e08087ba.au" len="247550" min="-0.965747" max="0.947612" rms="0.243404"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Yee Yee Ass Haircut (GTA V PS4)" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="63.095734" pan="0.0" colorindex="0">
+		<waveclip offset="6.47390023" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="134867">
+				<waveblock start="0">
+					<simpleblockfile filename="e080840f.au" len="134867" min="-0.17816" max="0.186722" rms="0.03376"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Yee Yee Ass Haircut (GTA V PS4)" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="63.095734" pan="0.0" colorindex="0">
+		<waveclip offset="6.47390023" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="134867">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808e6e.au" len="134867" min="-0.179617" max="0.185659" rms="0.033685"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Yee Yee Ass Haircut (GTA V PS4)" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="63.095734" pan="0.0" colorindex="0">
+		<waveclip offset="8.08242630" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="49042">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808406.au" len="49042" min="-0.148086" max="0.195289" rms="0.044159"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="9.19448980" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="49042">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808406.au" len="49042" min="-0.148086" max="0.195289" rms="0.044159"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="10.30655329" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="49042">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808406.au" len="49042" min="-0.148086" max="0.195289" rms="0.044159"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Yee Yee Ass Haircut (GTA V PS4)" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="63.095734" pan="0.0" colorindex="0">
+		<waveclip offset="8.08242630" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="49042">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808baa.au" len="49042" min="-0.149856" max="0.190821" rms="0.044105"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="9.19448980" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="49042">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808baa.au" len="49042" min="-0.149856" max="0.190821" rms="0.044105"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="10.30655329" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="49042">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808baa.au" len="49042" min="-0.149856" max="0.190821" rms="0.044105"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Yee Yee Ass Haircut (GTA V PS4)" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="63.095734" pan="0.0" colorindex="0">
+		<waveclip offset="8.53918367" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="98084">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808a6a.au" len="98084" min="-0.148086" max="0.195289" rms="0.044159"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="10.76331066" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="35032">
+				<waveblock start="0">
+					<simpleblockfile filename="e08082e5.au" len="35032" min="-0.148086" max="0.195289" rms="0.047507"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Yee Yee Ass Haircut (GTA V PS4)" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="63.095734" pan="0.0" colorindex="0">
+		<waveclip offset="8.53918367" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="98084">
+				<waveblock start="0">
+					<simpleblockfile filename="e080841f.au" len="98084" min="-0.149856" max="0.190821" rms="0.044105"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="10.76331066" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="35032">
+				<waveblock start="0">
+					<simpleblockfile filename="e080890a.au" len="35032" min="-0.149856" max="0.190821" rms="0.047436"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

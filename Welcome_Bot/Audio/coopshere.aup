@@ -1,0 +1,62 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="coopshere_data" version="1.3.0" audacityversion="2.4.1" sel0="2.8090476190" sel1="13.9531065760" vpos="0" h="0.0000000000" zoom="21.7155969731" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="Software" value="Lavf57.56.101"/>
+		<tag name="major_brand" value="dash"/>
+		<tag name="minor_version" value="0"/>
+		<tag name="compatible_brands" value="iso6mp41"/>
+	</tags>
+	<wavetrack name="Mafia City Song" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="3.162278" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="441858">
+				<waveblock start="0">
+					<simpleblockfile filename="e08084a9.au" len="262144" min="-0.605562" max="0.61195" rms="0.196435"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e0808027.au" len="179714" min="-0.615121" max="0.612011" rms="0.192784"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mafia City Song" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="3.162278" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="441858">
+				<waveblock start="0">
+					<simpleblockfile filename="e08081f7.au" len="262144" min="-0.605582" max="0.611934" rms="0.194996"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e0808c43.au" len="179714" min="-0.612264" max="0.601253" rms="0.190999"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Midnight Cowboy - Im Walkin Here" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="14.125376" pan="0.0" colorindex="0">
+		<waveclip offset="2.80904762" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="491453">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808f52.au" len="248441" min="-0.245309" max="0.234314" rms="0.059611"/>
+				</waveblock>
+				<waveblock start="248441">
+					<simpleblockfile filename="e0808783.au" len="243012" min="-0.230954" max="0.219548" rms="0.049214"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Midnight Cowboy - Im Walkin Here" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="14.125376" pan="0.0" colorindex="0">
+		<waveclip offset="2.80904762" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="491453">
+				<waveblock start="0">
+					<simpleblockfile filename="e080820d.au" len="248441" min="-0.707542" max="0.652556" rms="0.087053"/>
+				</waveblock>
+				<waveblock start="248441">
+					<simpleblockfile filename="e08081ae.au" len="243012" min="-0.543925" max="0.480268" rms="0.092093"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
