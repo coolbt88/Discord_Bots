@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const config = require('./config.json');
+const config = require('d:/Discord/JSON_files/Mov_bot-config.json');
 const pre = config.prefix;
 
 client.on('ready', () => {
@@ -10,7 +10,7 @@ client.on('ready', () => {
 client.on('message', message =>{
     if (message.author.bot) return;
 
-    if(message.content.startsWith(`${pre} honk`)){
+    if(message.content.startsWith(`${pre}`)){
         message.reply("I'M WALKING HERE");
     }
 
