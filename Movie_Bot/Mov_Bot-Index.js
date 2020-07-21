@@ -22,13 +22,23 @@ client.on('message', message =>{
 
     function setupChannel(){
         let channel = message.channel.id;
+        let foundChannel = false;
 
         client.channels.cache.get(channel).send('Alright. What channel would you like me to send my reminders to?');
         const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 10000 });
         collector.on('collect', message => {
-            checkChannel = message.content.replace(/\D/g,'');
-            client.channels.cache.get(channel).send(('Ok. I\'ll send my reminders to <#' + checkChannel + '>.'));
-            collector.return;
+            client.channels.cache.forEach((channel) => {
+                if(message.content === channel.id){
+                    checkChannel = message.content.replace(/\D/g,'');
+                    foundChannel = true;
+                }
+            })
+            if(foundChannel){
+                client.channels.cache.get(channel).send(('Ok. I\'ll send my reminders to <#' + checkChannel + '>.'));
+            }
+            else{
+                client.channels.cache.get(channel).send('Error.');
+            }
             return;
         })
     }
