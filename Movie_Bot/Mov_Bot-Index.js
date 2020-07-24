@@ -35,6 +35,13 @@ client.on('message', message =>{
         return;
     }
 
+    if(message.content.startsWith(`${pre}`)){
+        checkArray();
+        if(message.content.startsWith(`${pre}${mod}`)) return;
+        searchMovie();
+        return;
+    }
+
     /* Need to get reaciton working.
     if(message.content.startsWith(`${pre}${mod}reminders`)){
         sendReminder();
@@ -153,13 +160,6 @@ client.on('message', message =>{
         }
     }
     
-    if(message.content.startsWith(`${pre}`)){
-        checkArray();
-        if(message.content.startsWith(`${pre}${mod}`)) return;
-        searchMovie();
-        return;
-    }
-
     function searchMovie(){
         var tempTitle1 = (message.content).split("/");
         var tempmovieTitle = tempTitle1[1].split(' ');
