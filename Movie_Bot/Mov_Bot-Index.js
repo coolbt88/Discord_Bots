@@ -5,6 +5,13 @@ const pre = config.prefix;
 const mod = config.modprefix;
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
+var guildArray = [guildObject = {
+    guildID: 0,
+    guildAdmin: '',
+    guildChannel: ''
+}];
+var index;
+
 client.on('ready', () => {
     console.log('ready fool');
 });
@@ -15,6 +22,7 @@ var admin;
 
 client.on('message', message =>{
     if (message.author.bot) return;
+    checkArray();
 
     if(message.content.startsWith(`${pre}${mod}setup`)){
         setAdmin();
@@ -26,16 +34,21 @@ client.on('message', message =>{
         return;
     }
 
+    /* Need to get reaciton working.
     if(message.content.startsWith(`${pre}${mod}reminders`)){
         sendReminder();
         return;
     }
+    */
     
     function setupChannel(){
         let foundChannel = false;
 
-        if(admin === undefined){
+        if(guildArray[index].guildAdmin === undefined){
             message.channel.send("Need to initialize bot first. type 'm/?setup' to set up Movie Bot")
+        }
+        else if(!message.member.roles.cache.some(r => r.name.toLowerCase() === guildArray[index].guildAdmin)){
+            message.channel.send("You don't have permission to modify my settings.");
         }
         else{
             message.channel.send('Copy the ID of the channel you want me to send my announcements to: ');
@@ -44,22 +57,36 @@ client.on('message', message =>{
             collector.on('collect', m => {
                 client.channels.cache.forEach((channel) => {
                     if(m.content === channel.id){
-                        checkChannel = m.content.replace(/\D/g,'');
+                        guildArray[index].guildChannel = m.content.replace(/\D/g,'');
                         foundChannel = true;
                     }
                 })
                 if(foundChannel){
-                    message.channel.send(('Ok. I\'ll send my reminders to <#' + checkChannel + '>.'));
+                    message.channel.send(('Ok. I\'ll send my reminders to <#' + guildArray[index].guildChannel + '>.'));
                 }
                 else{
-                    message.channel.send('Error.');
+                    message.channel.send("I couldn't find that channel...");
                 }
                 return;
         })}
     }
 
+    function checkArray(){
+        if(guildArray.some(guild => guild.guildID === message.guild.id)){
+            index = guildArray.findIndex(guild => guild.guildID === message.guild.id)
+            console.log(index)
+            console.log(guildArray)
+        }
+        else{
+            let newGuild = guildArray.push({
+                guildID: message.guild.id,
+                guildAdmin: '',
+                guildChannel: ''
+            })
+        }
+    }
+
     function setAdmin(){
-        console.log(admin);
         message.channel.send('Which role would you like to be able to edit my settings?');
         const filter = m => m.author.id === message.author.id;
         const collector = message.channel.createMessageCollector(filter, {max: 1, time: 30000});
@@ -68,11 +95,11 @@ client.on('message', message =>{
                 let { cache } = m.guild.roles;
                 let role = cache.find(role => role.name.toLowerCase() === args);
                 if(role){
-                    admin = args;
-                    message.channel.send(`${m} can now modify my settings`);
+                    guildArray[index].guildAdmin = args;
+                    message.channel.send(`${role} can now modify my settings`);
                 }
                 else{
-                    message.channel.send('Error.');
+                    message.channel.send('Could not find that role...');
                 }
         })
     }
@@ -90,45 +117,38 @@ client.on('message', message =>{
             .then(console.log);
             */
 
-        if(checkChannel === undefined){
+           console.log(message);
+            if(checkChannel === undefined){
             message.channel.send(m)
                 .then(messageReaction => {
-                    messageReaction.react('🎥');
-                })
-                .then(async function (message){
-                    await message.react('🎥')
-                })
-                const filter = (reaction, user) => {
-                    return ['🎥'].includes(reaction.emoji.name) && user.id === message.author.id;
-                };
+                    messageReaction.react('🎥')
 
-                const collector = message.createReactionCollector(filter, {time: 60000});
-
-                collector.on('collect', (reaction, reactionCollector) => {
-                    if (reaction.emoji.name === '🎥') {
-                        var role = message.guild.role.find(role => role.name === "Moviegoers")
-                        message.member.addRole(role);
-                    }
+                    .then( message => {
+                        const filter = (reaction, user) => {
+                            return ['🎥'].includes(reaction.emoji.name) && user.id === message.author.id;
+                        };
+                        const collector = message.createReactionCollector(filter, {time: 6000});
+                        collector.on('collect', (reaction, user) => {
+                            var role = message.guild.role.find(role => role.name === "Moviegoers")
+                            message.member.addRole(role);
+                        })
+                    }) 
                 });
         }
         else{
-            checkChannel.send(m)
+            console.log(message);
+            client.channels.cache.get(checkChannel).send(m)
                 .then(messageReaction => {
                     messageReaction.react('🎥');
                 });
-                message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-                .then(collected => {
-                    const reaction = collected.first();
-            
-                    if (reaction.emoji.name === '🎥') {
-                        var role = message.guild.role.find(role => role.name === "Moviegoers")
-                        message.member.addRole(role);
-                    }
+                const filter = (reaction, user) => {
+                    return ['🎥'].includes(reaction.emoji.name) && user.id === message.author.id;
+                };
+                const collector = message.channel.createReactionCollector(filter, {time: 6000});
+                collector.on('collect', r => {
+                    var role = guild.role.find(role => role.name === "Moviegoers")
+                    message.member.addRole(role);
                 })
-                .catch(collected => {
-                    message.reply('you reacted with neither a thumbs up, nor a thumbs down.');
-                });
-    
         }
     }
     
@@ -148,15 +168,16 @@ client.on('message', message =>{
                 Description: ${info.Plot}
                 Starring: ${info.Actors}
                 `
+                console.log(checkChannel);
                 if(info.Title === undefined){
                     message.channel.send("I couldn't find a movie that matched that description...")
                 }
                 
-                else if(checkChannel === undefined){
+                else if(guildArray[index].guildChannel === undefined){
                     message.channel.send(m);
                 }
                 else{
-                    checkChannel.send(m);
+                    client.channels.cache.get(guildArray[index].guildChannel).send(m);
                 }
                
             }
