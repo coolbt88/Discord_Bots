@@ -22,14 +22,15 @@ var admin;
 
 client.on('message', message =>{
     if (message.author.bot) return;
-    checkArray();
 
     if(message.content.startsWith(`${pre}${mod}setup`)){
+        checkArray();
         setAdmin();
         return;
     }
 
     if(message.content.startsWith(`${pre}${mod}set-channel`)){
+        checkArray();
         setupChannel();
         return;
     }
@@ -153,41 +154,56 @@ client.on('message', message =>{
     }
     
     if(message.content.startsWith(`${pre}`)){
+        checkArray();
         if(message.content.startsWith(`${pre}${mod}`)) return;
-        var tempTitle1 = (message.content).split("/");
-        var movieTitle = encodeURIComponent(tempTitle1[1]);
-        var movieUrl = 'http://www.omdbapi.com/?apikey=472eaa45&t=' +movieTitle;
+        searchMovie();
+        return;
+    }
 
+    function searchMovie(){
+        var tempTitle1 = (message.content).split("/");
+        var tempmovieTitle = tempTitle1[1].split(' ');
+        var movieTitle = "";
+        for(i = 0; i< tempmovieTitle.length; i++){
+            movieTitle+= tempmovieTitle[i];
+            if(i !== tempmovieTitle.length-1 && tempmovieTitle[i] !== ''){movieTitle += "+"}
+        }
+        var movieYear = tempTitle1[2];
+        var movieUrl = 'http://www.omdbapi.com/?apikey=472eaa45&t=' +movieTitle+ '&y=' +movieYear;
+        
         let request = new XMLHttpRequest();
         request.open('GET', movieUrl);
         request.send();
         request.onload = () => {
             if(request.status === 200){
                 let info = JSON.parse(request.responseText);
-                var m = `We're going to be watching ${info.Title} soon!
-                Description: ${info.Plot}
-                Starring: ${info.Actors}
-                `
-                console.log(checkChannel);
-                if(info.Title === undefined){
-                    message.channel.send("I couldn't find a movie that matched that description...")
-                }
-                
-                else if(guildArray[index].guildChannel === undefined){
-                    message.channel.send(m);
-                }
-                else{
-                    client.channels.cache.get(guildArray[index].guildChannel).send(m);
-                }
-               
-            }
+                var m = {embed: {
+                    color: 3447003,
+                    title: info.Title,
+                    description: "Hey guys! This is the movie we're going to be watching tonight!",
+                    fields: [{
+                        name: 'Info:',
+                        value: `Description: ${info.Plot}
+                                Starring: ${info.Actors}`
+                    }
+                ],
+                timestamp: new Date(),
+                }}
+                    if(info.Title === undefined){
+                        message.channel.send("I couldn't find a movie that matched that description...")
+                    }
+
+                    else if(index === undefined || guildArray[index].guildChannel === ''){
+                        message.channel.send(m);
+                    }
+                    else{
+                        client.channels.cache.get(guildArray[index].guildChannel).send(m);
+                    }}
             else{
                 console.log(`error ${request.status} ${request.statusText}`);
             }
         }
-        return;
     }
-
 });
 
 client.login(config.token);
